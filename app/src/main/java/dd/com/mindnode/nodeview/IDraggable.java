@@ -1,9 +1,9 @@
 package dd.com.mindnode.nodeview;
 
 interface IDraggable {
-    void onStartDrag(int x, int y);
+    void onStartDrag();
 
-    void onDragging(int moveX, int moveY);
+    void onDragging(int left, int top, int moveX, int moveY);
 
-    void onStopDrag(int x, int y);
+    void onStopDrag(float xvel, float yvel);
 }
