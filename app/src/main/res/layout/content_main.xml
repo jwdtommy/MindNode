@@ -14,14 +14,6 @@
         android:layout_height="match_parent"
         android:background="#ffffff">
 
-        <dd.com.mindnode.nodeview.NodeView
-            android:id="@+id/nodeViewA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="30dp"
-            />
-
     </dd.com.mindnode.nodeview.MapView>
 
 </android.support.constraint.ConstraintLayout>

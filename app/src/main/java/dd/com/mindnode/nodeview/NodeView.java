@@ -1,126 +1,96 @@
 package dd.com.mindnode.nodeview;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Rect;
-import android.support.annotation.Nullable;
-import android.util.AttributeSet;
-import android.view.Gravity;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import dd.com.mindnode.R;
 
-public class NodeView extends RelativeLayout implements INode {
+import static dd.com.mindnode.nodeview.NodeView.State.STATE_EDIT;
+import static dd.com.mindnode.nodeview.NodeView.State.STATE_PRE_EDIT;
+
+public class NodeView extends NodeViewBase implements INode {
     private INode mParentNode;
     private boolean mIsDragging;
     private Node mNode;
-    private Rect mBorderRect = new Rect();
     private List<NodeView> mChildNodeViews = new ArrayList<>();
     private MapView mMapView;
-    private TextView mEditText;
-    private ImageView mIvAddNode;
-    private View mUnderLineBorder;
-    private boolean isFirst;
-    private int srcLeft;
-    private int srcTop;
+    private MindNodeEnv mEnv;
+    private Context mContext;
 
-    private float mScaleFactor;
+    private int mWidth;
+    private int mHeight;
+    private int x;
+    private int y;
+    private String mText = "主题";
+    private Paint mBorderPaint;
+    private Paint mTextPaint;
+    private RectF mBorderRect = new RectF();
+    private RectF mViewRect = new RectF();
+    private RectF mTextRect = new RectF();
+    private State mState = State.STATE_NORMAL;
+    private BorderStyle mBorderStyle = BorderStyle.STYLE_RECT;
 
-    public NodeView(Context context) {
-        super(context);
-        init(false);
+    private Bitmap mBitmapWhiteAdd;
+
+    public enum State {
+        STATE_NORMAL,
+        STATE_FOCUS,
+        STATE_PRE_EDIT,
+        STATE_EDIT
     }
 
-    public NodeView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        init(true);
+    public enum BorderStyle {
+        STYLE_RECT,
+        STYLE_LINE,
     }
 
-    public NodeView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init(true);
+    public NodeView(MapView mapView, MindNodeEnv env, int width, int height, int x, int y) {
+        mMapView = mapView;
+        mContext=mMapView.getContext();
+        mEnv = env;
+        mWidth = width;
+        mHeight = height;
+        init();
     }
 
-    private void init(boolean isFirst) {
-        this.isFirst = isFirst;
-        mEditText = new TextView(getContext());
-        mEditText.setId(View.generateViewId());
-        mEditText.setGravity(Gravity.CENTER);
-        mEditText.setTextSize(14);
-        mEditText.setText("主题  ");
-        mEditText.setTextColor(0xff333333);
-        mEditText.setBackgroundResource(0);
-        RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(-2, -2);
-        p.addRule(RelativeLayout.CENTER_IN_PARENT);
-        mEditText.setLayoutParams(p);
-        addView(mEditText);
+    public NodeView(MapView mapView,MindNodeEnv env, int x, int y) {
+        mMapView = mapView;
+        mContext=mMapView.getContext();
+        mEnv=env;
+        mWidth = 200;
+        mHeight = 100;
+        this.x = x;
+        this.y = y;
+        init();
+    }
 
-        mIvAddNode = new ImageView(getContext());
-        mIvAddNode.setId(View.generateViewId());
-        mIvAddNode.setImageResource(R.drawable.icon_add_topic);
-        RelativeLayout.LayoutParams p1 = new RelativeLayout.LayoutParams(-2, -2);
-        p1.addRule(RelativeLayout.CENTER_VERTICAL);
-        p1.addRule(RelativeLayout.RIGHT_OF, mEditText.getId());
-        p1.leftMargin = 90;
-        mIvAddNode.setLayoutParams(p1);
-        addView(mIvAddNode);
+    private void init() {
+        mBitmapWhiteAdd = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.whitestyle_add_32);
+        mBorderPaint = new Paint();
+        mBorderPaint.setAntiAlias(true);
+        mBorderPaint.setStrokeWidth(4);
+        mBorderPaint.setStyle(Paint.Style.STROKE);
+        mBorderPaint.setColor(0xff8be9fd);
 
-        mUnderLineBorder = new View(getContext());
-        RelativeLayout.LayoutParams p3 = new RelativeLayout.LayoutParams(-2, 10);
-        p3.addRule(RelativeLayout.ALIGN_LEFT, mEditText.getId());
-        p3.addRule(RelativeLayout.ALIGN_RIGHT, mIvAddNode.getId());
-        p3.addRule(RelativeLayout.BELOW, mIvAddNode.getId());
-        p3.topMargin = 15;
-        mUnderLineBorder.setLayoutParams(p3);
-        mUnderLineBorder.setBackgroundColor(Consts.LINE_COLORS[1]);
-        addView(mUnderLineBorder);
-
-        if (isFirst) {
-            setBackgroundResource(R.drawable.border_underline_8be9fd);
-            mUnderLineBorder.setVisibility(GONE);
-        } else {
-            setBackgroundColor(Color.TRANSPARENT);
-            mUnderLineBorder.setVisibility(VISIBLE);
-        }
-
-        mIvAddNode.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createChildNode();
-            }
-        });
+        mTextPaint = new Paint();
+        mTextPaint.setColor(0xff333333);
+        mTextPaint.setTextSize(40);
+        mTextPaint.setTextAlign(Paint.Align.CENTER);
+        mTextPaint.setStyle(Paint.Style.FILL);
+        mViewRect.set(x, y, x + mWidth, y + mHeight);
     }
 
     public void setText(String text) {
-        mEditText.setText(text + "");
-    }
-
-    private void createChildNode() {
-        NodeView nodeView = new NodeView(getContext());
-        int dy = 0;
-        if (mChildNodeViews.size() > 0) {
-            NodeView lastChildView = mChildNodeViews.get(mChildNodeViews.size() - 1);
-            dy = lastChildView.getTop() + lastChildView.getHeight() + 30;
-        } else {
-            dy = getTop() - 100;
-        }
-        nodeView.setText("子主题" + (mChildNodeViews.size() + 1));
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(-2, -2);
-        params.leftMargin = getLeft() + getWidth() + 100;
-        params.topMargin = dy;
-        nodeView.setLayoutParams(params);
-        mMapView = (MapView) getParent();
-        mMapView.addNodeView(this, nodeView);
-        mChildNodeViews.add(nodeView);
+        mText = text;
     }
 
     public void setNode(Node node) {
@@ -128,25 +98,71 @@ public class NodeView extends RelativeLayout implements INode {
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        drawBorder(canvas);
+    public void onDraw(Canvas canvas) {
+        switch (mState) {
+            case STATE_NORMAL:
+                drawBorder(canvas);
+                drawText(canvas);
+                break;
+            case STATE_FOCUS:
+                drawBorder(canvas);
+                drawText(canvas);
+                drawFocusLayer(canvas);
+                break;
+            case STATE_PRE_EDIT:
+                drawBorder(canvas);
+                drawText(canvas);
+                Paint paint = new Paint();
+                paint.setAlpha(100);
+                paint.setColor(0x33000000);
+                canvas.drawRect(x, y, x + mWidth, y + mHeight, paint);
+                break;
+            case STATE_EDIT:
+                drawBorder(canvas);
+                drawText(canvas);
+                break;
+        }
+    }
+
+    private void drawFocusLayer(Canvas canvas) {
+        canvas.drawBitmap(mBitmapWhiteAdd, getRight() - mBitmapWhiteAdd.getWidth(), getBottom() - mBitmapWhiteAdd.getHeight(), null);
     }
 
     private void drawBorder(Canvas canvas) {
-
+        switch (mBorderStyle) {
+            case STYLE_LINE:
+                mBorderPaint.reset();
+                mBorderPaint.setAntiAlias(true);
+                mBorderPaint.setStyle(Paint.Style.FILL);
+                mBorderPaint.setColor(0xff8be9fd);
+                canvas.drawRect(x, y + mHeight - 10, x + mWidth, y + mHeight, mBorderPaint);
+                break;
+            case STYLE_RECT:
+                mBorderPaint.reset();
+                mBorderPaint.setAntiAlias(true);
+                mBorderPaint.setStrokeWidth(4);
+                mBorderPaint.setStyle(Paint.Style.STROKE);
+                mBorderPaint.setColor(0xff8be9fd);
+                mBorderRect.set(x, y, x + mWidth, y + mHeight);
+                canvas.drawRoundRect(mBorderRect, 10, 10, mBorderPaint);
+                break;
+            default:
+                break;
+        }
     }
 
-    private void drawContent(Canvas canvas) {
-
+    private void drawText(Canvas canvas) {
+        mTextRect.set(x, y, x + mWidth, y + mHeight);
+        Paint.FontMetrics fontMetrics = mTextPaint.getFontMetrics();
+        float top = fontMetrics.top;
+        float bottom = fontMetrics.bottom;
+        int baseLineY = (int) (mTextRect.centerY() - top / 2 - bottom / 2);
+        canvas.drawText(mText + "", mTextRect.centerX(), baseLineY, mTextPaint);
     }
-
 
     @Override
     public void onStartDrag() {
         onStartDragImpl();
-        srcLeft = ((FrameLayout.LayoutParams) getLayoutParams()).leftMargin;
-        srcTop = ((FrameLayout.LayoutParams) getLayoutParams()).topMargin;
     }
 
     @Override
@@ -167,12 +183,15 @@ public class NodeView extends RelativeLayout implements INode {
     @Override
     public int[] getConnectStartPoint() {
         int[] xy = new int[2];
-        if (isFirst) {
-            xy[0] = (int) (getX() + getWidth());
-            xy[1] = (int) (getY() + getHeight() / 2);
-        } else {
-            xy[0] = (int) (getX() + getWidth());
-            xy[1] = (int) (getY() + getHeight());
+        switch (mBorderStyle) {
+            case STYLE_LINE:
+                xy[0] = (int) (getLeft() + getWidth());
+                xy[1] = (int) (getTop() + getHeight());
+                break;
+            case STYLE_RECT:
+                xy[0] = (int) (getLeft() + getWidth());
+                xy[1] = (int) (getTop() + getHeight() / 2);
+                break;
         }
         return xy;
     }
@@ -180,19 +199,48 @@ public class NodeView extends RelativeLayout implements INode {
     @Override
     public int[] getConnectEndPoint() {
         int[] xy = new int[2];
-        xy[0] = (int) getX();
-        xy[1] = (int) (getY() + getHeight() - 5);
+        xy[0] = (int) getLeft();
+        xy[1] = (int) (getTop() + getHeight() - 5);
         return xy;
     }
 
     @Override
     public boolean onScale(ScaleGestureDetector detector) {
-        mScaleFactor = detector.getScaleFactor();
-        setPivotX(0);
-        setPivotY(0);
-        setScaleX(mScaleFactor);
-        setScaleY(mScaleFactor);
         return true;
+    }
+
+
+    public void handleOnTouchEvent(MotionEvent event) {
+        State state = getState();
+        switch (state) {
+            case STATE_NORMAL:
+                mMapView.setCurrentView(this);
+                break;
+            case STATE_FOCUS:
+                RectF rectF = new RectF();
+                rectF.set(getRight() - mBitmapWhiteAdd.getWidth(), getBottom() - mBitmapWhiteAdd.getHeight(), getRight(), getBottom());
+                rectF=mEnv.getTransRect(rectF);
+                if (rectF.contains(event.getX(), event.getY())) {
+                    int childNodeX = getRight() + 100;
+                    int childNodeY;
+                    if (mChildNodeViews.size() > 0) {
+                        NodeView lastChildView = mChildNodeViews.get(mChildNodeViews.size() - 1);
+                        childNodeY = lastChildView.getBottom() + 30;
+                    } else {
+                        childNodeY = getTop() - 100;
+                    }
+                    String text = "子主题" + (mChildNodeViews.size() + 1);
+                    NodeView childNodeView = mMapView.addNodeView(this, childNodeX, childNodeY, BorderStyle.STYLE_LINE, text);
+                    mChildNodeViews.add(childNodeView);
+                }
+                else {
+                    setState(STATE_PRE_EDIT);
+                }
+                break;
+            case STATE_PRE_EDIT:
+                setState(STATE_EDIT);
+                break;
+        }
     }
 
     private void onStartDragImpl() {
@@ -200,23 +248,62 @@ public class NodeView extends RelativeLayout implements INode {
     }
 
     private void onDraggingImpl(int left, int top, int moveX, int moveY) {
-//        ((FrameLayout.LayoutParams)getLayoutParams()).leftMargin=left;
-//        ((FrameLayout.LayoutParams)getLayoutParams()).topMargin=top;
     }
 
     private void onStopDragImpl(float xvel, float yvel) {
         mIsDragging = false;
-        FrameLayout.LayoutParams st = (FrameLayout.LayoutParams) getLayoutParams();
-        st.gravity = Gravity.NO_GRAVITY;
-        st.leftMargin = getLeft();
-        st.topMargin = getTop();
-//        setLeft(0);
-//        setTop(0);
-        setLayoutParams(st);
     }
 
     private void onConnectImpl(INode parentNode) {
         mParentNode = parentNode;
+    }
+
+    public int getWidth() {
+        return mWidth;
+    }
+
+    public void setWidth(int width) {
+        mWidth = width;
+    }
+
+    public int getHeight() {
+        return mHeight;
+    }
+
+    public void setHeight(int height) {
+        mHeight = height;
+    }
+
+    public int getLeft() {
+        return x;
+    }
+
+    public int getTop() {
+        return y;
+    }
+
+    public int getBottom() {
+        return y + mHeight;
+    }
+
+    public int getRight() {
+        return x + mWidth;
+    }
+
+    public RectF getViewRect() {
+        return mViewRect;
+    }
+
+    public void setState(State state) {
+        mState = state;
+    }
+
+    public State getState() {
+        return mState;
+    }
+
+    public void setBorderStyle(BorderStyle borderStyle) {
+        mBorderStyle = borderStyle;
     }
 
 }
