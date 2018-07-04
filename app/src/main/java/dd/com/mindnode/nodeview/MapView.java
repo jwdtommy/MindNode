@@ -7,7 +7,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -15,28 +14,16 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
 import android.widget.FrameLayout;
-
 import java.util.ArrayList;
 import java.util.List;
-
+import dd.com.mindnode.nodeview.border.RoundRectBorder;
 import static dd.com.mindnode.nodeview.NodeView.State.STATE_FOCUS;
 import static dd.com.mindnode.nodeview.NodeView.State.STATE_NORMAL;
 
 public class MapView extends FrameLayout {
-    private ViewDragHelper mViewDragHelper;
     private ScaleGestureDetector mScaleGestureDetector;
     private GestureDetector mGestureDetector;
     private List<Line> mLines = new ArrayList<>();
-//    private float mScaleFactor = 1;
-//    private float mScale = 1;
-//    private float mLastScale = 1;
-//    private float mScalePivotX;
-//    private float mScalePivotY;
-//    private float mDistanceX;
-//    private float mDistanceY;
-//    private float mLastDistanceX;
-//    private float mLastDistanceY;
-
     private NodeView mNodeView;
     private List<NodeView> mNodeViews = new ArrayList<>();
 
@@ -50,7 +37,6 @@ public class MapView extends FrameLayout {
 
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-
             mEnv.setDistanceX(mEnv.getLastDistanceX() - distanceX);
             mEnv.setDistanceY(mEnv.getLastDistanceY() - distanceY);
             mEnv.setLastDistanceX(mEnv.getDistanceX());
@@ -104,7 +90,7 @@ public class MapView extends FrameLayout {
             @Override
             public void run() {
                 mNodeView = new NodeView(MapView.this, mEnv, 0, 0);
-                mNodeView.setBorderStyle(NodeView.BorderStyle.STYLE_RECT);
+                mNodeView.setBorder(RoundRectBorder.class);
                 mNodeView.setState(NodeView.State.STATE_FOCUS);
                 mCurrentView = mNodeView;
                 mNodeViews.add(mNodeView);
@@ -164,7 +150,6 @@ public class MapView extends FrameLayout {
             }
         }
         return true;
-
     }
 
     private NodeView findNodeView(float x, float y) {
@@ -179,8 +164,6 @@ public class MapView extends FrameLayout {
         return null;
     }
 
-    int awidth = 100;
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -192,48 +175,14 @@ public class MapView extends FrameLayout {
         for (int i = 0; i < mNodeViews.size(); i++) {
             mNodeViews.get(i).onDraw(canvas);
         }
-        drawLines(canvas);
-        canvas.restore();
 
-//        float tx = 100;
-//        float ty = 100;
-//        float sx = 2f;
-//        float sy = 3f;
-//        int px = 100;
-//        int py = 80;
-//
-//        int srcLeft = 300 - awidth / 2;
-//        int srcTop = 300 - awidth / 2;
-//        int srcRight = 300 + awidth / 2;
-//        int srcBottom = 300 + awidth / 2;
-//        matrix.preTranslate(tx, ty);
-//        matrix.preScale(sx, sy, px, py);
-//        canvas.setMatrix(matrix);
-//        canvas.drawRect(srcLeft, srcTop, srcRight, srcBottom, p2);
-//        canvas.restore();
-//
-//        canvas.save();
-//        Paint p3 = new Paint();
-//        p3.setAlpha(100);
-//        p3.setColor(0xaaffcd00);
-//
-//        int dstLeft = (int) ((srcLeft - px) * sx + px + tx);
-//        int dstTop = (int) ((srcTop - py) * sy + py + ty);
-//        int dstRight = (int) ((srcRight - px) * sx + px + tx);
-//        int dstBottom = (int) ((srcBottom - py) * sy + py + ty);
-//
-//        canvas.drawRect(dstLeft, dstTop, dstRight, dstBottom, p3);
-
-    }
-
-    private void drawLines(Canvas canvas) {
         for (int i = 0; i < mLines.size(); i++) {
             mLines.get(i).drawSelf(canvas);
         }
+        canvas.restore();
     }
 
-
-    public void setCurrentView(NodeView currentView) {
+    public void replaceCurrentView(NodeView currentView) {
         if (mCurrentView != null) {
             mCurrentView.setState(STATE_NORMAL);
         }
@@ -246,16 +195,16 @@ public class MapView extends FrameLayout {
     }
 
     public void addNodeView(NodeView nodeViewA, NodeView nodeViewB) {
-        setCurrentView(nodeViewB);
+        replaceCurrentView(nodeViewB);
         mNodeViews.add(nodeViewB);
         Line line = new Line(nodeViewA, nodeViewB);
         mLines.add(line);
         postInvalidate();
     }
 
-    public NodeView addNodeView(NodeView parentNodeView, int childNodeX, int childNodeY, NodeView.BorderStyle borderStyle, String text) {
+    public NodeView addNodeView(NodeView parentNodeView, int childNodeX, int childNodeY, Class borderStyle, String text) {
         NodeView nodeView = new NodeView(this, mEnv, childNodeX, childNodeY);
-        nodeView.setBorderStyle(borderStyle);
+        nodeView.setBorder(borderStyle);
         nodeView.setText(text);
         addNodeView(parentNodeView, nodeView);
         return nodeView;

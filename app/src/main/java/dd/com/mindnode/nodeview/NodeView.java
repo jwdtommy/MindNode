@@ -13,11 +13,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dd.com.mindnode.R;
+import dd.com.mindnode.nodeview.border.BorderFactory;
+import dd.com.mindnode.nodeview.border.IBorder;
+import dd.com.mindnode.nodeview.border.LineBorder;
+import dd.com.mindnode.nodeview.border.RoundRectBorder;
 
 import static dd.com.mindnode.nodeview.NodeView.State.STATE_EDIT;
 import static dd.com.mindnode.nodeview.NodeView.State.STATE_PRE_EDIT;
 
 public class NodeView extends NodeViewBase implements INode {
+    private static final int LINE_WIDTH = 100;
+    private static final int DISTANCE_Y = 40;
+
     private INode mParentNode;
     private boolean mIsDragging;
     private Node mNode;
@@ -33,13 +40,14 @@ public class NodeView extends NodeViewBase implements INode {
     private String mText = "主题";
     private Paint mBorderPaint;
     private Paint mTextPaint;
-    private RectF mBorderRect = new RectF();
     private RectF mViewRect = new RectF();
     private RectF mTextRect = new RectF();
     private State mState = State.STATE_NORMAL;
-    private BorderStyle mBorderStyle = BorderStyle.STYLE_RECT;
 
     private Bitmap mBitmapWhiteAdd;
+
+
+    private IBorder mBorder;
 
     public enum State {
         STATE_NORMAL,
@@ -48,24 +56,19 @@ public class NodeView extends NodeViewBase implements INode {
         STATE_EDIT
     }
 
-    public enum BorderStyle {
-        STYLE_RECT,
-        STYLE_LINE,
-    }
-
     public NodeView(MapView mapView, MindNodeEnv env, int width, int height, int x, int y) {
         mMapView = mapView;
-        mContext=mMapView.getContext();
+        mContext = mMapView.getContext();
         mEnv = env;
         mWidth = width;
         mHeight = height;
         init();
     }
 
-    public NodeView(MapView mapView,MindNodeEnv env, int x, int y) {
+    public NodeView(MapView mapView, MindNodeEnv env, int x, int y) {
         mMapView = mapView;
-        mContext=mMapView.getContext();
-        mEnv=env;
+        mContext = mMapView.getContext();
+        mEnv = env;
         mWidth = 200;
         mHeight = 100;
         this.x = x;
@@ -74,6 +77,7 @@ public class NodeView extends NodeViewBase implements INode {
     }
 
     private void init() {
+        mBorder = BorderFactory.create(LineBorder.class, mEnv, this);
         mBitmapWhiteAdd = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.whitestyle_add_32);
         mBorderPaint = new Paint();
         mBorderPaint.setAntiAlias(true);
@@ -87,6 +91,7 @@ public class NodeView extends NodeViewBase implements INode {
         mTextPaint.setTextAlign(Paint.Align.CENTER);
         mTextPaint.setStyle(Paint.Style.FILL);
         mViewRect.set(x, y, x + mWidth, y + mHeight);
+
     }
 
     public void setText(String text) {
@@ -102,6 +107,7 @@ public class NodeView extends NodeViewBase implements INode {
         switch (mState) {
             case STATE_NORMAL:
                 drawBorder(canvas);
+
                 drawText(canvas);
                 break;
             case STATE_FOCUS:
@@ -129,26 +135,27 @@ public class NodeView extends NodeViewBase implements INode {
     }
 
     private void drawBorder(Canvas canvas) {
-        switch (mBorderStyle) {
-            case STYLE_LINE:
-                mBorderPaint.reset();
-                mBorderPaint.setAntiAlias(true);
-                mBorderPaint.setStyle(Paint.Style.FILL);
-                mBorderPaint.setColor(0xff8be9fd);
-                canvas.drawRect(x, y + mHeight - 10, x + mWidth, y + mHeight, mBorderPaint);
-                break;
-            case STYLE_RECT:
-                mBorderPaint.reset();
-                mBorderPaint.setAntiAlias(true);
-                mBorderPaint.setStrokeWidth(4);
-                mBorderPaint.setStyle(Paint.Style.STROKE);
-                mBorderPaint.setColor(0xff8be9fd);
-                mBorderRect.set(x, y, x + mWidth, y + mHeight);
-                canvas.drawRoundRect(mBorderRect, 10, 10, mBorderPaint);
-                break;
-            default:
-                break;
-        }
+        mBorder.onDraw(canvas);
+//        switch (mBorderStyle) {
+//            case STYLE_LINE:
+//                mBorderPaint.reset();
+//                mBorderPaint.setAntiAlias(true);
+//                mBorderPaint.setStyle(Paint.Style.FILL);
+//                mBorderPaint.setColor(0xff8be9fd);
+//                canvas.drawRect(x, y + mHeight - 10, x + mWidth, y + mHeight, mBorderPaint);
+//                break;
+//            case STYLE_RECT:
+//                mBorderPaint.reset();
+//                mBorderPaint.setAntiAlias(true);
+//                mBorderPaint.setStrokeWidth(4);
+//                mBorderPaint.setStyle(Paint.Style.STROKE);
+//                mBorderPaint.setColor(0xff8be9fd);
+//                mBorderRect.set(x, y, x + mWidth, y + mHeight);
+//                canvas.drawRoundRect(mBorderRect, 10, 10, mBorderPaint);
+//                break;
+//            default:
+//                break;
+//        }
     }
 
     private void drawText(Canvas canvas) {
@@ -182,26 +189,12 @@ public class NodeView extends NodeViewBase implements INode {
 
     @Override
     public int[] getConnectStartPoint() {
-        int[] xy = new int[2];
-        switch (mBorderStyle) {
-            case STYLE_LINE:
-                xy[0] = (int) (getLeft() + getWidth());
-                xy[1] = (int) (getTop() + getHeight());
-                break;
-            case STYLE_RECT:
-                xy[0] = (int) (getLeft() + getWidth());
-                xy[1] = (int) (getTop() + getHeight() / 2);
-                break;
-        }
-        return xy;
+        return mBorder.getConnectStartPoint();
     }
 
     @Override
     public int[] getConnectEndPoint() {
-        int[] xy = new int[2];
-        xy[0] = (int) getLeft();
-        xy[1] = (int) (getTop() + getHeight() - 5);
-        return xy;
+        return mBorder.getConnectEndPoint();
     }
 
     @Override
@@ -214,12 +207,12 @@ public class NodeView extends NodeViewBase implements INode {
         State state = getState();
         switch (state) {
             case STATE_NORMAL:
-                mMapView.setCurrentView(this);
+                mMapView.replaceCurrentView(this);
                 break;
             case STATE_FOCUS:
                 RectF rectF = new RectF();
                 rectF.set(getRight() - mBitmapWhiteAdd.getWidth(), getBottom() - mBitmapWhiteAdd.getHeight(), getRight(), getBottom());
-                rectF=mEnv.getTransRect(rectF);
+                rectF = mEnv.getTransRect(rectF);
                 if (rectF.contains(event.getX(), event.getY())) {
                     int childNodeX = getRight() + 100;
                     int childNodeY;
@@ -230,10 +223,9 @@ public class NodeView extends NodeViewBase implements INode {
                         childNodeY = getTop() - 100;
                     }
                     String text = "子主题" + (mChildNodeViews.size() + 1);
-                    NodeView childNodeView = mMapView.addNodeView(this, childNodeX, childNodeY, BorderStyle.STYLE_LINE, text);
+                    NodeView childNodeView = mMapView.addNodeView(this, childNodeX, childNodeY, RoundRectBorder.class, text);
                     mChildNodeViews.add(childNodeView);
-                }
-                else {
+                } else {
                     setState(STATE_PRE_EDIT);
                 }
                 break;
@@ -302,8 +294,8 @@ public class NodeView extends NodeViewBase implements INode {
         return mState;
     }
 
-    public void setBorderStyle(BorderStyle borderStyle) {
-        mBorderStyle = borderStyle;
+    public void setBorder(Class<? extends IBorder> border) {
+        mBorder = BorderFactory.create(border, mEnv, this);
     }
 
 }

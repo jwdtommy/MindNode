@@ -11,18 +11,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3fd5e2e9-84f3-4ea2-ad7c-912a46bce099" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/App.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/BitmapPool.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/MindNodeEnv.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/NodeViewBase.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/greystyle_add_24.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/greystyle_add_32.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/whitestyle_add_24.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/whitestyle_add_32.png" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/INode.java" afterPath="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/INode.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/border/BaseBorder.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/border/BorderFactory.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/border/IBorder.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/border/LineBorder.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/border/RoundRectBorder.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/line/CustomLine.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/line/ILine.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/line/LineFactory.java" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/MapView.java" afterPath="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/MapView.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/NodeView.java" afterPath="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/NodeView.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,121 +59,18 @@
       <file leaf-file-name="MapView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/MapView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="271" column="36" lean-forward="false" selection-start-line="271" selection-start-column="36" selection-end-line="271" selection-end-column="36" />
+            <state relative-caret-position="191">
+              <caret line="192" column="40" lean-forward="false" selection-start-line="192" selection-start-column="40" selection-end-line="192" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1634#1635#0" expanded="true" />
-                <element signature="e#1669#1670#0" expanded="true" />
-                <element signature="e#2304#2305#0" expanded="true" />
-                <element signature="e#2339#2340#0" expanded="true" />
-                <element signature="e#3372#3989#0" expanded="true" />
-                <element signature="e#3988#3989#0" expanded="true" />
-                <element signature="e#8260#8261#0" expanded="true" />
-                <element signature="e#8311#8312#0" expanded="true" />
+                <element signature="e#1284#1285#0" expanded="true" />
+                <element signature="e#1319#1320#0" expanded="true" />
+                <element signature="e#1953#1954#0" expanded="true" />
+                <element signature="e#1988#1989#0" expanded="true" />
+                <element signature="e#3021#3623#0" expanded="true" />
+                <element signature="e#3622#3623#0" expanded="true" />
+                <element signature="e#6852#6853#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IDraggable.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/IDraggable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MindNodeEnv.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/MindNodeEnv.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1513#1514#0" expanded="true" />
-                <element signature="e#1548#1549#0" expanded="true" />
-                <element signature="e#1601#1602#0" expanded="true" />
-                <element signature="e#1643#1644#0" expanded="true" />
-                <element signature="e#1674#1675#0" expanded="true" />
-                <element signature="e#1703#1704#0" expanded="true" />
-                <element signature="e#1744#1745#0" expanded="true" />
-                <element signature="e#1774#1775#0" expanded="true" />
-                <element signature="e#1809#1810#0" expanded="true" />
-                <element signature="e#1842#1843#0" expanded="true" />
-                <element signature="e#1891#1892#0" expanded="true" />
-                <element signature="e#1929#1930#0" expanded="true" />
-                <element signature="e#1966#1967#0" expanded="true" />
-                <element signature="e#2001#2002#0" expanded="true" />
-                <element signature="e#2054#2055#0" expanded="true" />
-                <element signature="e#2096#2097#0" expanded="true" />
-                <element signature="e#2133#2134#0" expanded="true" />
-                <element signature="e#2168#2169#0" expanded="true" />
-                <element signature="e#2221#2222#0" expanded="true" />
-                <element signature="e#2263#2264#0" expanded="true" />
-                <element signature="e#2298#2299#0" expanded="true" />
-                <element signature="e#2331#2332#0" expanded="true" />
-                <element signature="e#2380#2381#0" expanded="true" />
-                <element signature="e#2418#2419#0" expanded="true" />
-                <element signature="e#2453#2454#0" expanded="true" />
-                <element signature="e#2486#2487#0" expanded="true" />
-                <element signature="e#2535#2536#0" expanded="true" />
-                <element signature="e#2573#2574#0" expanded="true" />
-                <element signature="e#2612#2613#0" expanded="true" />
-                <element signature="e#2649#2650#0" expanded="true" />
-                <element signature="e#2706#2707#0" expanded="true" />
-                <element signature="e#2752#2753#0" expanded="true" />
-                <element signature="e#2791#2792#0" expanded="true" />
-                <element signature="e#2828#2829#0" expanded="true" />
-                <element signature="e#2885#2886#0" expanded="true" />
-                <element signature="e#2931#2932#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Matrix.java" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-27/android/graphics/Matrix.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="414" column="13" lean-forward="false" selection-start-line="414" selection-start-column="13" selection-end-line="414" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Canvas.java" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-27/android/graphics/Canvas.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="1753" column="16" lean-forward="false" selection-start-line="1753" selection-start-column="16" selection-end-line="1753" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScaleGestureDetector.java" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-27/android/view/ScaleGestureDetector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="439" column="0" lean-forward="false" selection-start-line="439" selection-start-column="0" selection-end-line="439" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#17818#17819#0" expanded="true" />
-                <element signature="e#17848#17849#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GestureDetector.java" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-27/android/view/GestureDetector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="514" column="9" lean-forward="false" selection-start-line="514" selection-start-column="9" selection-end-line="514" selection-end-column="9" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -171,75 +78,140 @@
       <file leaf-file-name="NodeView.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/NodeView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="224" column="35" lean-forward="true" selection-start-line="224" selection-start-column="35" selection-end-line="224" selection-end-column="35" />
+            <state relative-caret-position="71">
+              <caret line="209" column="43" lean-forward="false" selection-start-line="209" selection-start-column="43" selection-end-line="209" selection-end-column="43" />
               <folding>
-                <element signature="e#2659#2660#0" expanded="true" />
-                <element signature="e#2687#2688#0" expanded="true" />
-                <element signature="e#2725#2726#0" expanded="true" />
-                <element signature="e#2753#2754#0" expanded="true" />
-                <element signature="e#5139#5140#0" expanded="true" />
-                <element signature="e#5172#5173#0" expanded="true" />
-                <element signature="e#5380#5381#0" expanded="true" />
-                <element signature="e#5422#5423#0" expanded="true" />
-                <element signature="e#5485#5486#0" expanded="true" />
-                <element signature="e#5526#5527#0" expanded="true" />
-                <element signature="e#6284#6285#0" expanded="true" />
-                <element signature="e#6311#6312#0" expanded="true" />
-                <element signature="e#7799#7800#0" expanded="true" />
-                <element signature="e#7833#7834#0" expanded="true" />
-                <element signature="e#7974#7975#0" expanded="true" />
-                <element signature="e#8009#8010#0" expanded="true" />
-                <element signature="e#8061#8062#0" expanded="true" />
-                <element signature="e#8101#8102#0" expanded="true" />
-                <element signature="e#8130#8131#0" expanded="true" />
-                <element signature="e#8159#8160#0" expanded="true" />
-                <element signature="e#8198#8199#0" expanded="true" />
-                <element signature="e#8228#8229#0" expanded="true" />
-                <element signature="e#8258#8259#0" expanded="true" />
-                <element signature="e#8288#8289#0" expanded="true" />
-                <element signature="e#8329#8330#0" expanded="true" />
-                <element signature="e#8361#8362#0" expanded="true" />
-                <element signature="e#8389#8390#0" expanded="true" />
-                <element signature="e#8413#8414#0" expanded="true" />
-                <element signature="e#8440#8441#0" expanded="true" />
-                <element signature="e#8464#8465#0" expanded="true" />
-                <element signature="e#8494#8495#0" expanded="true" />
-                <element signature="e#8528#8529#0" expanded="true" />
-                <element signature="e#8557#8558#0" expanded="true" />
-                <element signature="e#8590#8591#0" expanded="true" />
-                <element signature="e#8624#8625#0" expanded="true" />
-                <element signature="e#8656#8657#0" expanded="true" />
-                <element signature="e#8697#8698#0" expanded="true" />
-                <element signature="e#8727#8728#0" expanded="true" />
-                <element signature="e#8758#8759#0" expanded="true" />
-                <element signature="e#8787#8788#0" expanded="true" />
-                <element signature="e#8846#8847#0" expanded="true" />
-                <element signature="e#8888#8889#0" expanded="true" />
+                <element signature="e#2886#2887#0" expanded="true" />
+                <element signature="e#2914#2915#0" expanded="true" />
+                <element signature="e#2952#2953#0" expanded="true" />
+                <element signature="e#2980#2981#0" expanded="true" />
+                <element signature="e#5439#5440#0" expanded="true" />
+                <element signature="e#5472#5473#0" expanded="true" />
+                <element signature="e#5680#5681#0" expanded="true" />
+                <element signature="e#5722#5723#0" expanded="true" />
+                <element signature="e#5785#5786#0" expanded="true" />
+                <element signature="e#5826#5827#0" expanded="true" />
+                <element signature="e#5883#5884#0" expanded="true" />
+                <element signature="e#5936#5937#0" expanded="true" />
+                <element signature="e#5991#5992#0" expanded="true" />
+                <element signature="e#6042#6043#0" expanded="true" />
+                <element signature="e#6117#6118#0" expanded="true" />
+                <element signature="e#6144#6145#0" expanded="true" />
+                <element signature="e#7621#7622#0" expanded="true" />
+                <element signature="e#7655#7656#0" expanded="true" />
+                <element signature="e#7796#7797#0" expanded="true" />
+                <element signature="e#7831#7832#0" expanded="true" />
+                <element signature="e#7883#7884#0" expanded="true" />
+                <element signature="e#7923#7924#0" expanded="true" />
+                <element signature="e#7952#7953#0" expanded="true" />
+                <element signature="e#7981#7982#0" expanded="true" />
+                <element signature="e#8020#8021#0" expanded="true" />
+                <element signature="e#8050#8051#0" expanded="true" />
+                <element signature="e#8080#8081#0" expanded="true" />
+                <element signature="e#8110#8111#0" expanded="true" />
+                <element signature="e#8151#8152#0" expanded="true" />
+                <element signature="e#8183#8184#0" expanded="true" />
+                <element signature="e#8211#8212#0" expanded="true" />
+                <element signature="e#8235#8236#0" expanded="true" />
+                <element signature="e#8262#8263#0" expanded="true" />
+                <element signature="e#8286#8287#0" expanded="true" />
+                <element signature="e#8316#8317#0" expanded="true" />
+                <element signature="e#8350#8351#0" expanded="true" />
+                <element signature="e#8379#8380#0" expanded="true" />
+                <element signature="e#8412#8413#0" expanded="true" />
+                <element signature="e#8446#8447#0" expanded="true" />
+                <element signature="e#8478#8479#0" expanded="true" />
+                <element signature="e#8519#8520#0" expanded="true" />
+                <element signature="e#8549#8550#0" expanded="true" />
+                <element signature="e#8580#8581#0" expanded="true" />
+                <element signature="e#8609#8610#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BitmapFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-27/android/graphics/BitmapFactory.java">
+      <file leaf-file-name="LineBorder.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/border/LineBorder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="595" column="25" lean-forward="false" selection-start-line="595" selection-start-column="25" selection-end-line="595" selection-end-column="25" />
+            <state relative-caret-position="214">
+              <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseBorder.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/border/BaseBorder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="View.java" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-27/android/view/View.java">
+      <file leaf-file-name="BorderFactory.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/border/BorderFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="13666" column="21" lean-forward="false" selection-start-line="13666" selection-start-column="21" selection-end-line="13666" selection-end-column="21" />
+            <state relative-caret-position="135">
+              <caret line="9" column="40" lean-forward="false" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
               <folding>
-                <element signature="e#550880#550881#0" expanded="true" />
-                <element signature="e#550917#550918#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constructor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-27/java/lang/reflect/Constructor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="188">
+              <caret line="328" column="13" lean-forward="false" selection-start-line="328" selection-start-column="13" selection-end-line="328" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LineFactory.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/line/LineFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RoundRectBorder.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/border/RoundRectBorder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="615">
+              <caret line="41" column="30" lean-forward="false" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ILine.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/line/ILine.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IBorder.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/border/IBorder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -265,6 +237,7 @@
       <find>mScalePivotX</find>
       <find>crete</find>
       <find>mLastDistanceX</find>
+      <find>create</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2405,20 +2378,28 @@
         <option value="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/IDraggable.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/MindNodeHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/MindNodeEnv.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/line/ILine.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/line/CustomLine.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/border/BaseBorder.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/border/BorderFactory.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/border/IBorder.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/border/LineBorder.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/border/RoundRectBorder.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/MapView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/NodeView.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="-3" />
-    <option name="y" value="23" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="8" />
+    <option name="y" value="24" />
     <option name="width" value="1280" />
     <option name="height" value="709" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="AndroidView" proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -2433,7 +2414,62 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="MindNode" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MindNode" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="MindNode" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MindNode" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="MindNode" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MindNode" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MindNode" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MindNode" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MindNode" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MindNode" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MindNode" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MindNode" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="mindnode" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MindNode" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MindNode" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="mindnode" type="462c0819:PsiDirectoryNode" />
+              <item name="nodeview" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
@@ -2441,24 +2477,6 @@
             <path>
               <item name="MindNode" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="MindNode" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="MindNode" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="mindnode" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MindNode" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="mindnode" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="nodeview" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -2473,7 +2491,7 @@
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="device.picker.selection" value="A5RNW17A31008905" />
-    <property name="SearchEverywhereHistoryKey" value="NOde&#9;FILE&#9;file:///Users/tommy/Documents/GitProject2/MindNode/app/src/main/java/dd/com/mindnode/nodeview/NodeView.java&#10;Map&#9;FILE&#9;file:///Users/tommy/Documents/GitProject2/MindNode/app/src/main/java/dd/com/mindnode/nodeview/MapView.java&#10;ac&#9;FILE&#9;file:///Users/tommy/Documents/GitProject2/MindNode/app/src/main/res/layout/activity_main.xml&#10;ViewDrag&#9;FILE&#9;jar:///Users/tommy/.gradle/caches/modules-2/files-2.1/com.android.support/support-core-ui/27.1.1/266c369a3227be5afec33e11c964472269ff2a7c/support-core-ui-27.1.1-sources.jar!/android/support/v4/widget/ViewDragHelper.java&#10;Con&#9;FILE&#9;file:///Users/tommy/Documents/GitProject2/MindNode/app/src/main/res/layout/content_main.xml&#10;acti&#9;FILE&#9;file:///Users/tommy/Documents/GitProject2/MindNode/app/src/main/res/layout/activity_main.xml" />
+    <property name="SearchEverywhereHistoryKey" value="MapView&#9;FILE&#9;file:///Users/tommy/Documents/GitProject2/MindNode/app/src/main/java/dd/com/mindnode/nodeview/MapView.java&#10;Round&#9;FILE&#9;file:///Users/tommy/Documents/GitProject2/MindNode/app/src/main/java/dd/com/mindnode/nodeview/border/RoundRectBorder.java&#10;Line&#9;FILE&#9;file:///Users/tommy/Documents/GitProject2/MindNode/app/src/main/java/dd/com/mindnode/nodeview/border/LineBorder.java&#10;Rec&#9;FILE&#9;file:///Users/tommy/Documents/GitProject2/MindNode/app/src/main/java/dd/com/mindnode/nodeview/border/RoundRectBorder.java&#10;NODe&#9;FILE&#9;file:///Users/tommy/Documents/GitProject2/MindNode/app/src/main/java/dd/com/mindnode/nodeview/NodeView.java&#10;Node&#9;FILE&#9;file:///Users/tommy/Documents/GitProject2/MindNode/app/src/main/java/dd/com/mindnode/nodeview/NodeView.java&#10;NOde&#9;FILE&#9;file:///Users/tommy/Documents/GitProject2/MindNode/app/src/main/java/dd/com/mindnode/nodeview/NodeView.java&#10;Map&#9;FILE&#9;file:///Users/tommy/Documents/GitProject2/MindNode/app/src/main/java/dd/com/mindnode/nodeview/MapView.java&#10;ac&#9;FILE&#9;file:///Users/tommy/Documents/GitProject2/MindNode/app/src/main/res/layout/activity_main.xml&#10;ViewDrag&#9;FILE&#9;jar:///Users/tommy/.gradle/caches/modules-2/files-2.1/com.android.support/support-core-ui/27.1.1/266c369a3227be5afec33e11c964472269ff2a7c/support-core-ui-27.1.1-sources.jar!/android/support/v4/widget/ViewDragHelper.java&#10;Con&#9;FILE&#9;file:///Users/tommy/Documents/GitProject2/MindNode/app/src/main/res/layout/content_main.xml&#10;acti&#9;FILE&#9;file:///Users/tommy/Documents/GitProject2/MindNode/app/src/main/res/layout/activity_main.xml" />
     <property name="DEBUGGABLE_DEVICE" value="huawei-bnd_al10-A5RNW17A31008905" />
     <property name="DEBUGGABLE_PROCESS" value="dd.com.mindnode" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
@@ -2648,7 +2666,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-3" y="23" width="1280" height="709" extended-state="1" />
+    <frame x="8" y="24" width="1280" height="709" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2662,13 +2680,13 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14551607" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44500846" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1895093" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46700507" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.033840947" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1930533" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34179357" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2819063" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5109983" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -2727,7 +2745,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/MapView.java</url>
-          <line>144</line>
+          <line>130</line>
           <properties />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
@@ -2737,102 +2755,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="52" lean-forward="false" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/NodeView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="127" column="42" lean-forward="true" selection-start-line="127" selection-start-column="42" selection-end-line="127" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/MainActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="36" lean-forward="true" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/IConnectable.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/DragAndDropLayout.java" />
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/appcompat-v7/27.1.1/21d073509c5f8d25a1bf274067fa729a1fba8d75/appcompat-v7-27.1.1-sources.jar!/android/support/v7/app/AppCompatActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1380">
-          <caret line="132" column="24" lean-forward="false" selection-start-line="132" selection-start-column="24" selection-end-line="132" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/MainActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="21" column="42" lean-forward="false" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/LineView.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon_add_topic.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-27/android/widget/EditText.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="80" column="5" lean-forward="false" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-27/android/widget/RelativeLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="1423" column="20" lean-forward="false" selection-start-line="1423" selection-start-column="20" selection-end-line="1423" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-core-ui/27.1.1/266c369a3227be5afec33e11c964472269ff2a7c/support-core-ui-27.1.1-sources.jar!/android/support/v4/widget/SlidingPaneLayout.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
@@ -3064,22 +2986,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-27/android/view/ScaleGestureDetector.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
           <caret line="439" column="0" lean-forward="false" selection-start-line="439" selection-start-column="0" selection-end-line="439" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#17818#17819#0" expanded="true" />
-            <element signature="e#17848#17849#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#17818#17819#0" expanded="false" />
+            <element signature="e#17848#17849#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3089,8 +3003,8 @@
         <state relative-caret-position="153">
           <caret line="13666" column="21" lean-forward="false" selection-start-line="13666" selection-start-column="21" selection-end-line="13666" selection-end-column="21" />
           <folding>
-            <element signature="e#550880#550881#0" expanded="true" />
-            <element signature="e#550917#550918#0" expanded="true" />
+            <element signature="e#550880#550881#0" expanded="false" />
+            <element signature="e#550917#550918#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3124,43 +3038,43 @@
         <state relative-caret-position="60">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1513#1514#0" expanded="true" />
-            <element signature="e#1548#1549#0" expanded="true" />
-            <element signature="e#1601#1602#0" expanded="true" />
-            <element signature="e#1643#1644#0" expanded="true" />
-            <element signature="e#1674#1675#0" expanded="true" />
-            <element signature="e#1703#1704#0" expanded="true" />
-            <element signature="e#1744#1745#0" expanded="true" />
-            <element signature="e#1774#1775#0" expanded="true" />
-            <element signature="e#1809#1810#0" expanded="true" />
-            <element signature="e#1842#1843#0" expanded="true" />
-            <element signature="e#1891#1892#0" expanded="true" />
-            <element signature="e#1929#1930#0" expanded="true" />
-            <element signature="e#1966#1967#0" expanded="true" />
-            <element signature="e#2001#2002#0" expanded="true" />
-            <element signature="e#2054#2055#0" expanded="true" />
-            <element signature="e#2096#2097#0" expanded="true" />
-            <element signature="e#2133#2134#0" expanded="true" />
-            <element signature="e#2168#2169#0" expanded="true" />
-            <element signature="e#2221#2222#0" expanded="true" />
-            <element signature="e#2263#2264#0" expanded="true" />
-            <element signature="e#2298#2299#0" expanded="true" />
-            <element signature="e#2331#2332#0" expanded="true" />
-            <element signature="e#2380#2381#0" expanded="true" />
-            <element signature="e#2418#2419#0" expanded="true" />
-            <element signature="e#2453#2454#0" expanded="true" />
-            <element signature="e#2486#2487#0" expanded="true" />
-            <element signature="e#2535#2536#0" expanded="true" />
-            <element signature="e#2573#2574#0" expanded="true" />
-            <element signature="e#2612#2613#0" expanded="true" />
-            <element signature="e#2649#2650#0" expanded="true" />
-            <element signature="e#2706#2707#0" expanded="true" />
-            <element signature="e#2752#2753#0" expanded="true" />
-            <element signature="e#2791#2792#0" expanded="true" />
-            <element signature="e#2828#2829#0" expanded="true" />
-            <element signature="e#2885#2886#0" expanded="true" />
-            <element signature="e#2931#2932#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1513#1514#0" expanded="false" />
+            <element signature="e#1548#1549#0" expanded="false" />
+            <element signature="e#1601#1602#0" expanded="false" />
+            <element signature="e#1643#1644#0" expanded="false" />
+            <element signature="e#1674#1675#0" expanded="false" />
+            <element signature="e#1703#1704#0" expanded="false" />
+            <element signature="e#1744#1745#0" expanded="false" />
+            <element signature="e#1774#1775#0" expanded="false" />
+            <element signature="e#1809#1810#0" expanded="false" />
+            <element signature="e#1842#1843#0" expanded="false" />
+            <element signature="e#1891#1892#0" expanded="false" />
+            <element signature="e#1929#1930#0" expanded="false" />
+            <element signature="e#1966#1967#0" expanded="false" />
+            <element signature="e#2001#2002#0" expanded="false" />
+            <element signature="e#2054#2055#0" expanded="false" />
+            <element signature="e#2096#2097#0" expanded="false" />
+            <element signature="e#2133#2134#0" expanded="false" />
+            <element signature="e#2168#2169#0" expanded="false" />
+            <element signature="e#2221#2222#0" expanded="false" />
+            <element signature="e#2263#2264#0" expanded="false" />
+            <element signature="e#2298#2299#0" expanded="false" />
+            <element signature="e#2331#2332#0" expanded="false" />
+            <element signature="e#2380#2381#0" expanded="false" />
+            <element signature="e#2418#2419#0" expanded="false" />
+            <element signature="e#2453#2454#0" expanded="false" />
+            <element signature="e#2486#2487#0" expanded="false" />
+            <element signature="e#2535#2536#0" expanded="false" />
+            <element signature="e#2573#2574#0" expanded="false" />
+            <element signature="e#2612#2613#0" expanded="false" />
+            <element signature="e#2649#2650#0" expanded="false" />
+            <element signature="e#2706#2707#0" expanded="false" />
+            <element signature="e#2752#2753#0" expanded="false" />
+            <element signature="e#2791#2792#0" expanded="false" />
+            <element signature="e#2828#2829#0" expanded="false" />
+            <element signature="e#2885#2886#0" expanded="false" />
+            <element signature="e#2931#2932#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3173,71 +3087,212 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/MapView.java">
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="271" column="36" lean-forward="false" selection-start-line="271" selection-start-column="36" selection-end-line="271" selection-end-column="36" />
+        <state relative-caret-position="585">
+          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+          <folding>
+            <element signature="e#257#275#0" expanded="false" />
+            <element signature="e#491#509#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-27/android/widget/TextView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="716" column="15" lean-forward="false" selection-start-line="716" selection-start-column="15" selection-end-line="716" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-27/android/widget/Editor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="159" column="45" lean-forward="false" selection-start-line="159" selection-start-column="45" selection-end-line="159" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/line/CustomLine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-27/android/graphics/drawable/Drawable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="176" column="22" lean-forward="false" selection-start-line="176" selection-start-column="22" selection-end-line="176" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-27/java/lang/Class.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="504" column="20" lean-forward="false" selection-start-line="504" selection-start-column="20" selection-end-line="504" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-27/java/lang/reflect/Constructor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="328" column="13" lean-forward="false" selection-start-line="328" selection-start-column="13" selection-end-line="328" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/border/IBorder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/border/BaseBorder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/border/LineBorder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1634#1635#0" expanded="true" />
-            <element signature="e#1669#1670#0" expanded="true" />
-            <element signature="e#2304#2305#0" expanded="true" />
-            <element signature="e#2339#2340#0" expanded="true" />
-            <element signature="e#3372#3989#0" expanded="true" />
-            <element signature="e#3988#3989#0" expanded="true" />
-            <element signature="e#8260#8261#0" expanded="true" />
-            <element signature="e#8311#8312#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/border/BorderFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="40" lean-forward="false" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/border/RoundRectBorder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="41" column="30" lean-forward="false" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/line/ILine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/line/LineFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/MapView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="192" column="40" lean-forward="false" selection-start-line="192" selection-start-column="40" selection-end-line="192" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1284#1285#0" expanded="true" />
+            <element signature="e#1319#1320#0" expanded="true" />
+            <element signature="e#1953#1954#0" expanded="true" />
+            <element signature="e#1988#1989#0" expanded="true" />
+            <element signature="e#3021#3623#0" expanded="true" />
+            <element signature="e#3622#3623#0" expanded="true" />
+            <element signature="e#6852#6853#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/dd/com/mindnode/nodeview/NodeView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="224" column="35" lean-forward="true" selection-start-line="224" selection-start-column="35" selection-end-line="224" selection-end-column="35" />
+        <state relative-caret-position="71">
+          <caret line="209" column="43" lean-forward="false" selection-start-line="209" selection-start-column="43" selection-end-line="209" selection-end-column="43" />
           <folding>
-            <element signature="e#2659#2660#0" expanded="true" />
-            <element signature="e#2687#2688#0" expanded="true" />
-            <element signature="e#2725#2726#0" expanded="true" />
-            <element signature="e#2753#2754#0" expanded="true" />
-            <element signature="e#5139#5140#0" expanded="true" />
-            <element signature="e#5172#5173#0" expanded="true" />
-            <element signature="e#5380#5381#0" expanded="true" />
-            <element signature="e#5422#5423#0" expanded="true" />
-            <element signature="e#5485#5486#0" expanded="true" />
-            <element signature="e#5526#5527#0" expanded="true" />
-            <element signature="e#6284#6285#0" expanded="true" />
-            <element signature="e#6311#6312#0" expanded="true" />
-            <element signature="e#7799#7800#0" expanded="true" />
-            <element signature="e#7833#7834#0" expanded="true" />
-            <element signature="e#7974#7975#0" expanded="true" />
-            <element signature="e#8009#8010#0" expanded="true" />
-            <element signature="e#8061#8062#0" expanded="true" />
-            <element signature="e#8101#8102#0" expanded="true" />
-            <element signature="e#8130#8131#0" expanded="true" />
-            <element signature="e#8159#8160#0" expanded="true" />
-            <element signature="e#8198#8199#0" expanded="true" />
-            <element signature="e#8228#8229#0" expanded="true" />
-            <element signature="e#8258#8259#0" expanded="true" />
-            <element signature="e#8288#8289#0" expanded="true" />
-            <element signature="e#8329#8330#0" expanded="true" />
-            <element signature="e#8361#8362#0" expanded="true" />
-            <element signature="e#8389#8390#0" expanded="true" />
-            <element signature="e#8413#8414#0" expanded="true" />
-            <element signature="e#8440#8441#0" expanded="true" />
-            <element signature="e#8464#8465#0" expanded="true" />
-            <element signature="e#8494#8495#0" expanded="true" />
-            <element signature="e#8528#8529#0" expanded="true" />
-            <element signature="e#8557#8558#0" expanded="true" />
-            <element signature="e#8590#8591#0" expanded="true" />
-            <element signature="e#8624#8625#0" expanded="true" />
-            <element signature="e#8656#8657#0" expanded="true" />
-            <element signature="e#8697#8698#0" expanded="true" />
-            <element signature="e#8727#8728#0" expanded="true" />
-            <element signature="e#8758#8759#0" expanded="true" />
-            <element signature="e#8787#8788#0" expanded="true" />
-            <element signature="e#8846#8847#0" expanded="true" />
-            <element signature="e#8888#8889#0" expanded="true" />
+            <element signature="e#2886#2887#0" expanded="true" />
+            <element signature="e#2914#2915#0" expanded="true" />
+            <element signature="e#2952#2953#0" expanded="true" />
+            <element signature="e#2980#2981#0" expanded="true" />
+            <element signature="e#5439#5440#0" expanded="true" />
+            <element signature="e#5472#5473#0" expanded="true" />
+            <element signature="e#5680#5681#0" expanded="true" />
+            <element signature="e#5722#5723#0" expanded="true" />
+            <element signature="e#5785#5786#0" expanded="true" />
+            <element signature="e#5826#5827#0" expanded="true" />
+            <element signature="e#5883#5884#0" expanded="true" />
+            <element signature="e#5936#5937#0" expanded="true" />
+            <element signature="e#5991#5992#0" expanded="true" />
+            <element signature="e#6042#6043#0" expanded="true" />
+            <element signature="e#6117#6118#0" expanded="true" />
+            <element signature="e#6144#6145#0" expanded="true" />
+            <element signature="e#7621#7622#0" expanded="true" />
+            <element signature="e#7655#7656#0" expanded="true" />
+            <element signature="e#7796#7797#0" expanded="true" />
+            <element signature="e#7831#7832#0" expanded="true" />
+            <element signature="e#7883#7884#0" expanded="true" />
+            <element signature="e#7923#7924#0" expanded="true" />
+            <element signature="e#7952#7953#0" expanded="true" />
+            <element signature="e#7981#7982#0" expanded="true" />
+            <element signature="e#8020#8021#0" expanded="true" />
+            <element signature="e#8050#8051#0" expanded="true" />
+            <element signature="e#8080#8081#0" expanded="true" />
+            <element signature="e#8110#8111#0" expanded="true" />
+            <element signature="e#8151#8152#0" expanded="true" />
+            <element signature="e#8183#8184#0" expanded="true" />
+            <element signature="e#8211#8212#0" expanded="true" />
+            <element signature="e#8235#8236#0" expanded="true" />
+            <element signature="e#8262#8263#0" expanded="true" />
+            <element signature="e#8286#8287#0" expanded="true" />
+            <element signature="e#8316#8317#0" expanded="true" />
+            <element signature="e#8350#8351#0" expanded="true" />
+            <element signature="e#8379#8380#0" expanded="true" />
+            <element signature="e#8412#8413#0" expanded="true" />
+            <element signature="e#8446#8447#0" expanded="true" />
+            <element signature="e#8478#8479#0" expanded="true" />
+            <element signature="e#8519#8520#0" expanded="true" />
+            <element signature="e#8549#8550#0" expanded="true" />
+            <element signature="e#8580#8581#0" expanded="true" />
+            <element signature="e#8609#8610#0" expanded="true" />
           </folding>
         </state>
       </provider>

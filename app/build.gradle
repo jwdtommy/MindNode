@@ -12,15 +12,31 @@ android {
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        debug{
+            minifyEnabled false
+        }
+
+    }
+    applicationVariants.all { variant ->
+        def version = variant.getVersionName()
+        variant.outputs.all { output ->
+            if (output.outputFile != null && output.outputFile.name.endsWith('.apk')
+                    && !"debug".equals(variant.buildType.name)) {
+                def outputName = "MindNode_"
+                outputName += version+ ".apk"
+                outputFileName = outputName
+            }
+        }
     }
 }
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
