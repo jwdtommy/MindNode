@@ -7,16 +7,23 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
+import android.text.Editable;
+import android.text.StaticLayout;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
+import android.widget.EditText;
 import android.widget.FrameLayout;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import dd.com.mindnode.nodeview.border.RoundRectBorder;
+
 import static dd.com.mindnode.nodeview.NodeView.State.STATE_FOCUS;
 import static dd.com.mindnode.nodeview.NodeView.State.STATE_NORMAL;
 
@@ -28,6 +35,7 @@ public class MapView extends FrameLayout {
     private List<NodeView> mNodeViews = new ArrayList<>();
 
     private MindNodeEnv mEnv;
+    private EditText mEditText;
 
     private GestureDetector.OnGestureListener mOnGestureListener = new GestureDetector.SimpleOnGestureListener() {
         @Override
@@ -86,10 +94,36 @@ public class MapView extends FrameLayout {
 
     private void init() {
         mEnv = MindNodeEnv.getEnv();
+        mEditText = new EditText(getContext());
+        mEditText.setTextSize(12*mEnv.getScaleFactor());
+        mEditText.setCursorVisible(false);
+        mEditText.setBackgroundColor(0xffffffff);
+        mEditText.setVisibility(GONE);
+        addView(mEditText);
+        mEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String mText = s.toString();
+                int width = (int) StaticLayout.getDesiredWidth(mText, mCurrentView.getTextPaint());
+                mCurrentView.setWidth(width);
+                mCurrentView.setText(mText);
+                postInvalidate();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         post(new Runnable() {
             @Override
             public void run() {
-                mNodeView = new NodeView(MapView.this, mEnv, 0, 0);
+                mNodeView = new NodeView(MapView.this, mEnv);
                 mNodeView.setBorder(RoundRectBorder.class);
                 mNodeView.setState(NodeView.State.STATE_FOCUS);
                 mCurrentView = mNodeView;
@@ -99,12 +133,6 @@ public class MapView extends FrameLayout {
                 invalidate();
             }
         });
-    }
-
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-
     }
 
     private NodeView mDownNodeView;
@@ -123,6 +151,7 @@ public class MapView extends FrameLayout {
                 mDownNodeView = findNodeView(event.getX(), event.getY());
                 if (mDownNodeView == null) {
                     setCurrentViewNormal();
+                    mEditText.setVisibility(GONE);
                     postInvalidate();
                     mGestureDetector.onTouchEvent(event);
                 }
@@ -199,17 +228,26 @@ public class MapView extends FrameLayout {
         mNodeViews.add(nodeViewB);
         Line line = new Line(nodeViewA, nodeViewB);
         mLines.add(line);
-        postInvalidate();
     }
 
-    public NodeView addNodeView(NodeView parentNodeView, int childNodeX, int childNodeY, Class borderStyle, String text) {
-        NodeView nodeView = new NodeView(this, mEnv, childNodeX, childNodeY);
+    public NodeView addNodeView(NodeView parentNodeView, Class borderStyle, String text) {
+        NodeView nodeView = new NodeView(this, mEnv);
+        nodeView.setParentNode(parentNodeView);
         nodeView.setBorder(borderStyle);
         nodeView.setText(text);
         addNodeView(parentNodeView, nodeView);
         return nodeView;
     }
 
+    public void showEditView() {
+        RectF rect = mEnv.getTransRect(mCurrentView.getViewRect());
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams((int) (rect.right - rect.left), (int) (rect.bottom - rect.top));
+        params.leftMargin = (int) rect.left;
+        params.topMargin = (int) rect.top;
+        mEditText.setLayoutParams(params);
+        mEditText.setText(mCurrentView.getText()+"");
+        mEditText.setVisibility(VISIBLE);
+    }
 
     public static int lineColorIndex = 0;
 

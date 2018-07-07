@@ -1,6 +1,5 @@
 package dd.com.mindnode.nodeview;
 
-import android.content.Context;
 import android.graphics.RectF;
 
 public class MindNodeEnv {
@@ -29,7 +28,7 @@ public class MindNodeEnv {
     }
 
     /**
-     * 双指放大缩小，单指空白区域平移后会导致canvas发生scale和translate，导致NodeView的肉眼坐标实际已经变化了。
+     * 双指放大缩小、单指空白区域平移后会导致canvas发生scale和translate，导致NodeView的肉眼坐标实际已经变化了。
      * @param srcRect
      * @return
      */

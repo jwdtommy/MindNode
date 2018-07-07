@@ -1,14 +1,15 @@
 package dd.com.mindnode.nodeview;
 
 import android.graphics.Canvas;
+import android.graphics.RectF;
 import android.view.ScaleGestureDetector;
+
+import java.util.List;
 
 /**
  * @J.Tommy 一个节点，可以被拖拽，也可以连接其他节点
  */
 interface INode extends IDraggable {
-    void onConnected(INode parentNode);
-
     int[] getConnectStartPoint();
 
     int[] getConnectEndPoint();
@@ -16,4 +17,20 @@ interface INode extends IDraggable {
     boolean onScale(ScaleGestureDetector detector);
 
     void onDraw(Canvas canvas);
+
+    int getLeft();
+
+    int getRight();
+
+    int getTop();
+
+    int getBottom();
+
+    RectF getViewRect();
+
+    RectF getTextRect();
+
+    List<NodeView> getChildViews();
+
+    NodeView getLastView();
 }
