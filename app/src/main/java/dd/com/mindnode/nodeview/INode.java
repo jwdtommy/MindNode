@@ -6,10 +6,12 @@ import android.view.ScaleGestureDetector;
 
 import java.util.List;
 
+import dd.com.mindnode.nodeview.border.IBorder;
+
 /**
  * @J.Tommy 一个节点，可以被拖拽，也可以连接其他节点
  */
-interface INode extends IDraggable {
+public interface INode extends IDraggable {
     int[] getConnectStartPoint();
 
     int[] getConnectEndPoint();
@@ -33,4 +35,6 @@ interface INode extends IDraggable {
     List<NodeView> getChildViews();
 
     NodeView getLastView();
+
+    IBorder getBorder();
 }

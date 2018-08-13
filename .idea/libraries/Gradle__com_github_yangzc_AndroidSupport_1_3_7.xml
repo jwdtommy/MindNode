@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.yangzc:AndroidSupport-1.3.7">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/AndroidSupport-1.3.7.aar/4487cdb59b45f48b731864face81d115/jars/libs/org.apache.http.legacy.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/AndroidSupport-1.3.7.aar/4487cdb59b45f48b731864face81d115/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/AndroidSupport-1.3.7.aar/4487cdb59b45f48b731864face81d115/jars/libs/photoview-1.2.4.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/AndroidSupport-1.3.7.aar/4487cdb59b45f48b731864face81d115/jars/libs/annotation.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/AndroidSupport-1.3.7.aar/4487cdb59b45f48b731864face81d115/jars/libs/nineoldandroids.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/AndroidSupport-1.3.7.aar/4487cdb59b45f48b731864face81d115/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/AndroidSupport-1.3.7.aar/4487cdb59b45f48b731864face81d115/jars/libs/universal-image-loader-1.9.4.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/AndroidSupport-1.3.7.aar/4487cdb59b45f48b731864face81d115/jars/libs/httpmime-4.1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.yangzc/AndroidSupport/1.3.7/97bafb794fdf0ccbaa8ff940d09af054c50b32a2/AndroidSupport-1.3.7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

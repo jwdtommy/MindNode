@@ -9,13 +9,18 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.StaticLayout;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.GestureDetector;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 
@@ -28,6 +33,7 @@ import static dd.com.mindnode.nodeview.NodeView.State.STATE_FOCUS;
 import static dd.com.mindnode.nodeview.NodeView.State.STATE_NORMAL;
 
 public class MapView extends FrameLayout {
+
     private ScaleGestureDetector mScaleGestureDetector;
     private GestureDetector mGestureDetector;
     private List<Line> mLines = new ArrayList<>();
@@ -62,17 +68,25 @@ public class MapView extends FrameLayout {
 
         @Override
         public boolean onScale(ScaleGestureDetector detector) {
-            mEnv.setScaleFactor(detector.getScaleFactor());
-            mEnv.setScale(mEnv.getLastScale() * mEnv.getScaleFactor());
-            mEnv.setScalePivotX(detector.getFocusX());
-            mEnv.setScalePivotY(detector.getFocusY());
-            invalidate();
-            return super.onScale(detector);
+            if (mScaleGestureDetector.isInProgress()) {
+                mEnv.setScaleFactor(detector.getScaleFactor());
+                mEnv.setScale(mEnv.getLastScale() * mEnv.getScaleFactor());
+                mEnv.setScalePivotX(detector.getFocusX());
+                mEnv.setScalePivotY(detector.getFocusY());
+                Log.i("jwd", "onScale fx=" + detector.getFocusX());
+                Log.i("jwd", "onScale fy=" + detector.getFocusY());
+                postInvalidate();
+                return false;
+            }
+            Log.i("jwd", "onScale but not in progress");
+            return true;
         }
 
         @Override
         public void onScaleEnd(ScaleGestureDetector detector) {
             super.onScaleEnd(detector);
+            Log.i("jwd", "onScaleEnd fx=" + detector.getFocusX());
+            Log.i("jwd", "onScaleEnd fy=" + detector.getFocusY());
             mEnv.setLastScale(mEnv.getScale());
         }
     };
@@ -94,10 +108,14 @@ public class MapView extends FrameLayout {
 
     private void init() {
         mEnv = MindNodeEnv.getEnv();
+        setBackgroundColor(mEnv.getCurrentColorStyle().bgColor);
         mEditText = new EditText(getContext());
-        mEditText.setTextSize(12*mEnv.getScaleFactor());
+        mEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX, 40 * mEnv.getScaleFactor());
         mEditText.setCursorVisible(false);
-        mEditText.setBackgroundColor(0xffffffff);
+        mEditText.setFocusable(true);
+        mEditText.setGravity(Gravity.CENTER);
+        mEditText.setSelectAllOnFocus(true);
+        mEditText.setBackgroundColor(0x00ffffff);
         mEditText.setVisibility(GONE);
         addView(mEditText);
         mEditText.addTextChangedListener(new TextWatcher() {
@@ -109,9 +127,14 @@ public class MapView extends FrameLayout {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String mText = s.toString();
-                int width = (int) StaticLayout.getDesiredWidth(mText, mCurrentView.getTextPaint());
-                mCurrentView.setWidth(width);
-                mCurrentView.setText(mText);
+                if (TextUtils.isEmpty(mText)) {
+                    return;
+                }
+                Log.i("jwd", "aftertextChanged text=" + mText);
+                int width = (int) StaticLayout.getDesiredWidth(mCurrentView.getText() + mText, mCurrentView.getTextPaint());
+                mCurrentView.setTextWidth(width);
+                mCurrentView.setText(mCurrentView.getText() + mText);
+                mEditText.setText("");
                 postInvalidate();
             }
 
@@ -124,6 +147,7 @@ public class MapView extends FrameLayout {
             @Override
             public void run() {
                 mNodeView = new NodeView(MapView.this, mEnv);
+                mNodeView.setLevel(0);
                 mNodeView.setBorder(RoundRectBorder.class);
                 mNodeView.setState(NodeView.State.STATE_FOCUS);
                 mCurrentView = mNodeView;
@@ -200,7 +224,8 @@ public class MapView extends FrameLayout {
         Matrix matrix = new Matrix();
         matrix.preTranslate(mEnv.getDistanceX(), mEnv.getDistanceY());
         matrix.preScale(mEnv.getScale(), mEnv.getScale(), mEnv.getScalePivotX(), mEnv.getScalePivotY());
-        canvas.setMatrix(matrix);
+//        matrix.preScale(mEnv.getScale(), mEnv.getScale());
+        canvas.concat(matrix);
         for (int i = 0; i < mNodeViews.size(); i++) {
             mNodeViews.get(i).onDraw(canvas);
         }
@@ -223,20 +248,30 @@ public class MapView extends FrameLayout {
         mCurrentView.setState(STATE_NORMAL);
     }
 
-    public void addNodeView(NodeView nodeViewA, NodeView nodeViewB) {
+    public NodeView addNodeView(NodeView parentNodeView, Class borderStyle, String text) {
+        NodeView nodeView = new NodeView(this, mEnv);
+        parentNodeView.getChildNodeViews().add(nodeView);
+        nodeView.setParentNode(parentNodeView);
+        nodeView.setIndex(parentNodeView.getChildNodeViews().size() - 1);
+        nodeView.setLevel(parentNodeView.getLevel() + 1);
+        nodeView.setText(text);
+        nodeView.setBorder(borderStyle);
+        addNodeView(parentNodeView, nodeView);
+        return nodeView;
+    }
+
+    private void addNodeView(NodeView nodeViewA, NodeView nodeViewB) {
         replaceCurrentView(nodeViewB);
         mNodeViews.add(nodeViewB);
         Line line = new Line(nodeViewA, nodeViewB);
         mLines.add(line);
     }
 
-    public NodeView addNodeView(NodeView parentNodeView, Class borderStyle, String text) {
-        NodeView nodeView = new NodeView(this, mEnv);
-        nodeView.setParentNode(parentNodeView);
-        nodeView.setBorder(borderStyle);
-        nodeView.setText(text);
-        addNodeView(parentNodeView, nodeView);
-        return nodeView;
+    public void showSoftKeyboard(View view, Context mContext) {
+        if (view.requestFocus()) {
+            InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+        }
     }
 
     public void showEditView() {
@@ -245,12 +280,16 @@ public class MapView extends FrameLayout {
         params.leftMargin = (int) rect.left;
         params.topMargin = (int) rect.top;
         mEditText.setLayoutParams(params);
-        mEditText.setText(mCurrentView.getText()+"");
         mEditText.setVisibility(VISIBLE);
+        mEditText.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mEditText.requestFocus();
+                showSoftKeyboard(mEditText, getContext());
+            }
+        }, 200);
+        mCurrentView.setText("");
     }
-
-    public static int lineColorIndex = 0;
-
 
     public class Line {
         private Path mPath;
@@ -268,10 +307,7 @@ public class MapView extends FrameLayout {
             mPaint.setStrokeCap(Paint.Cap.BUTT);
             mPaint.setStrokeWidth(10);
             mPaint.setStyle(Paint.Style.STROKE);
-            mPaint.setColor(Consts.LINE_COLORS[lineColorIndex]);
-            if (++lineColorIndex == Consts.LINE_COLORS.length) {
-                lineColorIndex = 0;
-            }
+            mPaint.setColor(mNodeViewB.getBorder().getColor());
         }
 
         public void drawSelf(Canvas canvas) {

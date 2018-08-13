@@ -2,7 +2,15 @@ package dd.com.mindnode.nodeview;
 
 import android.graphics.RectF;
 
+import org.json.JSONObject;
+
+import dd.com.mindnode.App;
+import dd.com.mindnode.Utils;
+
 public class MindNodeEnv {
+    public static final float MAX_SCALE = 3;
+    public static final float MIN_SCALE = 0.5f;
+
 
     private float mScaleFactor = 1;
     private float mScale = 1;
@@ -14,10 +22,14 @@ public class MindNodeEnv {
     private float mLastDistanceX;
     private float mLastDistanceY;
 
+    private ColorStyle mCurrentColorStyle;
+
     private static MindNodeEnv mindNodeEnv;
 
     private MindNodeEnv() {
 
+        JSONObject jsonObject = Utils.getJsonObject("color_style_1.json", App.getAppContext());
+        mCurrentColorStyle = new ColorStyle(jsonObject);
     }
 
     public static MindNodeEnv getEnv() {
@@ -29,6 +41,7 @@ public class MindNodeEnv {
 
     /**
      * 双指放大缩小、单指空白区域平移后会导致canvas发生scale和translate，导致NodeView的肉眼坐标实际已经变化了。
+     *
      * @param srcRect
      * @return
      */
@@ -62,7 +75,7 @@ public class MindNodeEnv {
     }
 
     public void setScale(float scale) {
-        mScale = scale;
+        mScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, scale));
     }
 
     public float getLastScale() {
@@ -70,7 +83,7 @@ public class MindNodeEnv {
     }
 
     public void setLastScale(float lastScale) {
-        mLastScale = lastScale;
+        mLastScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, lastScale));
     }
 
     public float getScalePivotX() {
@@ -119,5 +132,14 @@ public class MindNodeEnv {
 
     public void setLastDistanceY(float lastDistanceY) {
         mLastDistanceY = lastDistanceY;
+    }
+
+
+    public ColorStyle getCurrentColorStyle() {
+        return mCurrentColorStyle;
+    }
+
+    public void setCurrentColorStyle(ColorStyle currentColorStyle) {
+        mCurrentColorStyle = currentColorStyle;
     }
 }

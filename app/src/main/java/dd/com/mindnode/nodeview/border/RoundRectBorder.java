@@ -8,8 +8,6 @@ import dd.com.mindnode.nodeview.MindNodeEnv;
 import dd.com.mindnode.nodeview.NodeView;
 
 public class RoundRectBorder extends BaseBorder {
-
-
     private Paint mBorderPaint;
 
     public RoundRectBorder(MindNodeEnv env, NodeView nodeView) {
@@ -23,7 +21,7 @@ public class RoundRectBorder extends BaseBorder {
         mBorderPaint.setAntiAlias(true);
         mBorderPaint.setStrokeWidth(4);
         mBorderPaint.setStyle(Paint.Style.STROKE);
-        mBorderPaint.setColor(0xff8be9fd);
+        mBorderPaint.setColor(mColor);
         RectF mBorderRect = new RectF();
         mBorderRect.set(mNodeView.getLeft(), mNodeView.getTop(), mNodeView.getRight(), mNodeView.getBottom());
         canvas.drawRoundRect(mBorderRect, 10, 10, mBorderPaint);
@@ -32,7 +30,7 @@ public class RoundRectBorder extends BaseBorder {
     @Override
     public int[] getConnectStartPoint() {
         int[] xy = new int[2];
-        xy[0] = (int) (mNodeView.getLeft() + mNodeView.getWidth());
+        xy[0] = (int) (mNodeView.getRight());
         xy[1] = (int) (mNodeView.getTop() + mNodeView.getHeight() / 2);
         return xy;
     }
@@ -43,6 +41,11 @@ public class RoundRectBorder extends BaseBorder {
         xy[0] = (int) mNodeView.getLeft();
         xy[1] = (int) (mNodeView.getBottom() - 5);
         return xy;
+    }
+
+    @Override
+    public int getpadding() {
+        return 30;
     }
 }
 

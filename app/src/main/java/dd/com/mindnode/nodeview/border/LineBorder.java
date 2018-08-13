@@ -19,7 +19,7 @@ public class LineBorder extends BaseBorder {
         mBorderPaint.reset();
         mBorderPaint.setAntiAlias(true);
         mBorderPaint.setStyle(Paint.Style.FILL);
-        mBorderPaint.setColor(0xff8be9fd);
+        mBorderPaint.setColor(mColor);
         canvas.drawRect(mNodeView.getLeft(), mNodeView.getBottom() - 10, mNodeView.getRight(), mNodeView.getBottom(), mBorderPaint);
     }
 
@@ -37,5 +37,10 @@ public class LineBorder extends BaseBorder {
         xy[0] = (int) mNodeView.getLeft();
         xy[1] = (int) (mNodeView.getBottom() - 5);
         return xy;
+    }
+
+    @Override
+    public int getpadding() {
+        return 30;
     }
 }

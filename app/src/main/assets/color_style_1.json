@@ -1,0 +1,13 @@
+{
+  "bgColor": "#E7EBEE",
+  "mainNodeBorderColor": "#B2D7FF",
+  "mainNodeBgColor": "#ffffff",
+  "textColor": "#60747E",
+  "lineColors": [
+    "#1F87DE",
+    "#922AA5",
+    "#FCB60F",
+    "#DC2228",
+    "#389337"
+  ]
+}

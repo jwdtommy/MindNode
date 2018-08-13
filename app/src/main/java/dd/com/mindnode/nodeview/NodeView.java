@@ -35,8 +35,9 @@ public class NodeView extends NodeViewBase implements INode {
     private Context mContext;
     private int mId;
     private int mIndex;
+    private int mLevel;
 
-    private int mWidth;
+    private int mTextWidth;
     private int mHeight;
     private String mText = "主题";
     private TextPaint mTextPaint;
@@ -47,12 +48,8 @@ public class NodeView extends NodeViewBase implements INode {
 
     private IBorder mBorder;
 
-    public void setIndex(int index) {
-        mIndex = index;
-    }
-
-    public String getText() {
-        return mText;
+    public int getIndex() {
+        return mIndex;
     }
 
     public enum State {
@@ -61,22 +58,13 @@ public class NodeView extends NodeViewBase implements INode {
         STATE_PRE_EDIT,
         STATE_EDIT
     }
-//
-//    public NodeView(MapView mapView, MindNodeEnv env, int width, int height) {
-//        mMapView = mapView;
-//        mContext = mMapView.getContext();
-//        mEnv = env;
-//        mWidth = width;
-//        mHeight = height;
-//        init();
-//    }
 
     public NodeView(MapView mapView, MindNodeEnv env) {
         mId = ++id;
         mMapView = mapView;
         mContext = mMapView.getContext();
         mEnv = env;
-        mWidth = 200;
+        mTextWidth = 200;
         mHeight = 100;
         init();
     }
@@ -85,7 +73,7 @@ public class NodeView extends NodeViewBase implements INode {
         mBorder = BorderFactory.create(LineBorder.class, mEnv, this);
         mBitmapWhiteAdd = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.whitestyle_add_32);
         mTextPaint = new TextPaint();
-        mTextPaint.setColor(0xff333333);
+        mTextPaint.setColor(mEnv.getCurrentColorStyle().textColor);
         mTextPaint.setTextSize(40);
         mTextPaint.setTextAlign(Paint.Align.CENTER);
         mTextPaint.setStyle(Paint.Style.FILL);
@@ -94,6 +82,15 @@ public class NodeView extends NodeViewBase implements INode {
     public void setText(String text) {
         mText = text;
     }
+
+    public void setIndex(int index) {
+        mIndex = index;
+    }
+
+    public String getText() {
+        return mText;
+    }
+
 
     @Override
     public void onDraw(Canvas canvas) {
@@ -135,7 +132,7 @@ public class NodeView extends NodeViewBase implements INode {
         float top = fontMetrics.top;
         float bottom = fontMetrics.bottom;
         int baseLineY = (int) (getTextRect().centerY() - top / 2 - bottom / 2);
-        canvas.drawText(mText+"_"+mId, getTextRect().centerX(), baseLineY, mTextPaint);
+        canvas.drawText(mText + "", getTextRect().centerX(), baseLineY, mTextPaint);
     }
 
     @Override
@@ -179,8 +176,6 @@ public class NodeView extends NodeViewBase implements INode {
                 rectF = mEnv.getTransRect(rectF);
                 if (rectF.contains(event.getX(), event.getY())) {
                     NodeView childNodeView = mMapView.addNodeView(this, RoundRectBorder.class, mId + "");
-                    mChildNodeViews.add(childNodeView);
-                    childNodeView.setIndex(mChildNodeViews.size() - 1);
                     mMapView.invalidate();
                 } else {
                     setState(STATE_PRE_EDIT);
@@ -189,6 +184,7 @@ public class NodeView extends NodeViewBase implements INode {
             case STATE_PRE_EDIT:
                 setState(STATE_EDIT);
                 mMapView.showEditView();
+                mMapView.invalidate();
                 break;
         }
 
@@ -202,12 +198,16 @@ public class NodeView extends NodeViewBase implements INode {
         mParentNode = parentNode;
     }
 
-    public int getWidth() {
-        return mWidth;
+    public INode getParentNode() {
+        return mParentNode;
     }
 
-    public void setWidth(int width) {
-        mWidth = width;
+    public int geTextWidth() {
+        return mTextWidth;
+    }
+
+    public void setTextWidth(int width) {
+        mTextWidth = width;
     }
 
     public int getHeight() {
@@ -248,7 +248,7 @@ public class NodeView extends NodeViewBase implements INode {
 
     @Override
     public int getRight() {
-        return getLeft() + getWidth();
+        return getLeft() + geTextWidth() + 2 * mBorder.getpadding();
     }
 
     @Override
@@ -288,7 +288,24 @@ public class NodeView extends NodeViewBase implements INode {
         mBorder = BorderFactory.create(border, mEnv, this);
     }
 
+    public int getLevel() {
+        return mLevel;
+    }
+
+    public void setLevel(int level) {
+        mLevel = level;
+    }
+
+    @Override
+    public IBorder getBorder() {
+        return mBorder;
+    }
+
     public TextPaint getTextPaint() {
         return mTextPaint;
+    }
+
+    public List<NodeView> getChildNodeViews() {
+        return mChildNodeViews;
     }
 }

@@ -7,4 +7,6 @@ public interface IBorder {
 
     int[] getConnectStartPoint();
     int[] getConnectEndPoint();
+    int getColor();
+    int getpadding();
 }
